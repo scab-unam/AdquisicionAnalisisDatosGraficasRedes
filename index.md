@@ -12,7 +12,7 @@ El curso está diseñado para desarrollar los temas teóricos y prácticos, tant
 | Anatomía general (ratones, ratas, e insectos) | Fundamentos de probabilidad | Fundamentos de linux y LaTeX |
 | Neuroanatomía  | Fundamentos de álgebra lineal | Fundamentos de programación |
 | Biofísica en células excitables | Series de tiempo (uni y multivariadas) | Cálculo numérico y herramientas gráficas |
-| Excitabilidad y calcio | Reducción dimensional | Probabilidad condicional, correlaciones, correlogramas cruzados ||
+| Excitabilidad y calcio | Reducción dimensional | Probabilidad condicional, correlaciones, correlogramas cruzados |
 | Ensambles neuronales | Teoría de gráficas | Gráficas y redes con [networkx](networkx.github.io) |
 
 
