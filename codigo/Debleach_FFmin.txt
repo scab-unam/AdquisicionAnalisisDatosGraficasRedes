@@ -1,0 +1,115 @@
+#pragma rtGlobals=1 // Use modern global access method.
+
+
+Menu "Analyse Calcium" // define main  drop-down menu                        <------- El menú de Analyse Calcium, para elegir Debleach ó Fmin
+" Rapport Fmin", WvsFFmin()
+"Debleach Calcium",Oregon() 
+End // GetNMQuickLoad
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function Oregon()                                                            <------- Función Debleach
+
+ string WaveListStr="",NameWD="",NameDeb=""
+ Variable  ChoixFonction
+ variable i ,diff_f
+silent 1
+ 
+    WaveListStr=WaveList("!time*",";","WIN:"+Winname(0,1))
+  
+   Prompt ChoixFonction,"Modele Exponentiel ou LinŽaire:",popup "1;2;"         <----- Corrección por decaimiento, elección de 1 ó 2 por el usuario
+
+   
+ Doprompt "Choix de la fonction de Debleaching",ChoixFonction
+  if (V_flag == 0)
+    Display                                                <------------- CREO que muestra la gráfica 
+    do
+    
+    NameWD=stringfromlist(i, WaveListStr)
+    if (strlen(NameWD)==0)
+      break
+      else
+	wave expo=$NameWD                                        <------------ Creo que es la señal de entrada
+	NameDeb=NameWD+"_"+num2str(i)
+	
+	Duplicate /O expo,fit
+	Duplicate /O expo, debleach
+	Duplicate /O expo,$NameDeb
+	
+	wave res=$NameDeb
+	if (ChoixFonction==1)                                    <------------ Si la elección del usuario es 1
+	CurveFit /H="000"/W=0 exp, fit/D=debleach                <------------ Ajuste exponencial de la curva 
+	
+	debleach=K0+K1*exp(-K2*x)
+	res=expo-(K0+K1*exp(-K2*x))                              <------------ Resta de la señal - la exponencial ajustada
+	//Duplicate /O res,corrige
+	diff_f=expo[0]-res[0]
+    res=diff_f+res
+     
+	 else                                                    <------------ Si la elección del usuario es 2
+     CurveFit /H="000"/W=0 line, fit/D=debleach              <------------ Ajuste lineal de la curva
+	
+	 debleach=K0+K1*x
+	 res=expo-(K0+K1*x)                                      <------------ Resta de la señal - la linea ajustada
+	//Duplicate /O res,corrige
+	 diff_f=expo[0]-res[0]
+        res=diff_f+res
+        endif
+	
+	WaveStats /Q res
+	
+	//corrige=res/V_max
+	// res=corrige
+	appendtograph  res                                       <------------- agrega a la gráfica res (Porqué aquí solo usan "res" y abajo no? )
+	i+=1           de                                          <------------- Siguiente serie de tiempo
+	endif
+	while(1)
+endif	
+End
+La
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function  WvsFFmin()                                               <--------------- Función de Fmin
+String Tsrc,sorc,sorc1
+variable i,Ndt,Tdx=0.03,ChF
+prompt Tdx,"Intervalle d'Žchantillonnage"                          <--------------- Intervalo de muestreo 
+Prompt ChF,"ImageJ ou NIH image",popup "O;N;"                      <--------------- ImageJ ó NIH image 
+doprompt "Analyse Calcium",Tdx,ChF
+sorc=WaveList("*",";","WIN:")
+Tsrc=StringFromList(0,sorc)
+Ndt=numpnts($Tsrc)
+Make /N=(Ndt)/O/D sec
+sec=x*Tdx                                                         <---------------- CREO que es un vector de tiempo a partir del intervalo de muestreo
+
+do
+Tsrc=StringFromList(i,sorc)
+
+if (Strlen(Tsrc)==0)
+Break
+else
+Wave Sc=$Tsrc                                                     <------------ CREO que es la señal de entrada porque se usa en los cálculos de abajo
+
+sorc1=Tsrc+"F_min"
+Make/N=(Ndt)/O/D $sorc1;DelayUpdate
+Wave CalW=$sorc1                                                  <------------ CREO que se hace un vector
+Wavestats /Q Sc
+if (ChF==1)                                                       <------------ Si la elección del usuario es 1, no sé si es ImageJ ó NIH image 
+CalW=Sc/V_min
+else                                                              <------------ Si la elección del usuario NO es 1, no sé si es ImageJ ó NIH image 
+CalW=1/(Sc/V_Max)
+endif
+if (i==0)                                                         <------------ Si es la primera serie de tiempo
+Display CalW vs sec                                               <------------ Muestra la gráfica 
+else                                                              <------------ Si no es la primer serie de tiempo, agrega la gráfica 
+AppendToGraph CalW vs sec                                         <-----------------  En la gráfica usan CalW y sec!!!
+endif
+endif
+i+=1                                                              <------------- Siguiente serie de tiempo
+While(1)
+
+end
+
+
+ 
+

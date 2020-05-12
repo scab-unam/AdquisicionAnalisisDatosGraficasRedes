@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# Adquisición y análisis de datos incluyendo teoría de gráficas y redes
+## Marco Arieli Herrera Valdez, Facultad de Ciencias, UNAM
 
-You can use the [editor on GitHub](https://github.com/curandero13/analisisSeriesTemporalesMultidimensionales/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Los materiales contenidos en este sitio son parte de un _curso interdisciplinario_ para estudiantes de nivel universitario en ciencias. 
+El curso fué desarrollado en la Facultad de Ciencias de la Universidad Nacional Autónoma de México. Los temas son desarrollados combinando distintas componentes, que sin restar importancia por el orden de mención, son la adquisición de conocimiento teórico tanto en biología y matemáticas, y el desarrollo de habilidades prácticas entre las que destacan el trabajo experimental con preparación, manipulación y adquisición de datos de muestras biológicas, así como la programación e implementación de herramientas de análisis multivariado que entre otras cosas implementa teoría de gráficas y redes. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+El curso está diseñado para desarrollar los temas teóricos y prácticos, tanto biológicos como matemáticos, en paralelo. Durante su implementación, todas las herramientas computacionales utilizadas son de acceso abierto. Para los reportes técnicos fueron utilizados [LaTeX](https://www.latex-project.org/) y [python](www.python.org) (módulos [numpy](https://numpy.org/), [matplotlib](https://matplotlib.org/), [pandas](https://pandas.pydata.org/), [networkx](https://networkx.github.io/)). Las sesiones de trabajo están registradas en cuadernos en JuPyTeR, que ofrecen la posibilidad de combinar explicaciones con símbolos en Markdown (similar al LaTeX), código en python y gráficas. Los archivos de datos están guardados en su mayoría en formatos csv, pero algunos registros en formatos de matlab y Igor-Pro están disponibles. Tutoriales para la apertura de archivos con datos de distintos tipos también están disponibles en este sitio.   Modificaciones en el tipo de software pueden ser implementadas dependiendo de la disponibilidad y necesidades de los instructores.
 
-### Markdown
+### Temario general (2020)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+| **Biología** | **Matemáticas** | **Cómputo y programación** |
+| Anatomía general (ratones, ratas, e insectos) | Fundamentos de probabilidad | Fundamentos de linux y LaTeX |
+| Neuroanatomía  | Fundamentos de álgebra lineal | Fundamentos de programación |
+| Biofísica en células excitables | Series de tiempo (uni y multivariadas) | Cálculo numérico y herramientas gráficas |
+| Excitabilidad y calcio | Reducción dimensional | Probabilidad condicional, correlaciones, correlogramas cruzados |
+| Ensambles neuronales | Teoría de gráficas | Gráficas y redes con [networkx](networkx.github.io) |
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/curandero13/analisisSeriesTemporalesMultidimensionales/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
