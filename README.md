@@ -1,0 +1,3 @@
+# adquisicionAnalisisDatosGraficasRedes
+
+Los materiales contenidos en este sitio son parte de un curso interdisciplinario para estudiantes de nivel universitario en ciencias. El curso fué desarrollado en la Facultad de Ciencias de la Universidad Nacional Autónoma de México. Los temas son desarrollados combinando distintas componentes, que sin restar importancia por el orden de mención, son la adquisición de conocimiento teórico tanto en biología y matemáticas, y el desarrollo de habilidades prácticas entre las que destacan el trabajo experimental con preparación, manipulación y adquisición de datos de muestras biológicas, así como la programación e implementación de herramientas de análisis multivariado que entre otras cosas implementa teoría de gráficas y redes.
